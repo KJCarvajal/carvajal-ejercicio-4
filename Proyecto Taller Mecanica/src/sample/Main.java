@@ -5,21 +5,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("frmPrincipal.fxml"));
+        Parent rootLoginUsuario = FXMLLoader.load(getClass().getResource("frmLoginUsuario.fxml"));
 
         //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("MecaniK");
-        Scene scene = new Scene(root);
+        Scene sceneLoginUsuario = new Scene(rootLoginUsuario);
         //scene.setFill(Color.RED);
-        primaryStage.setScene(scene);
+        primaryStage.setScene(sceneLoginUsuario);
         primaryStage.show();
         //#0dbf3d <-- Color verde primario
-
     }
 
     public static void main(String[] args) {

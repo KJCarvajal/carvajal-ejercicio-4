@@ -1,0 +1,37 @@
+.label-bienvenido-a{
+    -fx-text-fill: #f5f4f4;
+    -fx-font-size: 18px;
+    -fx-font-family: "Maiandra GD";
+}
+
+.label-logo-mecanik{
+    -fx-text-fill: #0dbf3d;
+    -fx-font-size: 22px;
+    -fx-font-family: "Maiandra GD";
+}
+
+.text-field-usuario{
+    -fx-text-fill: #f5f4f4;
+    -fx-font-size: 18px;
+    -fx-font-family: "Maiandra GD";
+    -fx-border-color:  #0dbf3d;
+    -fx-border-width: 0px 0px 1px 0px;
+
+}
+.text-field-usuario:hover{
+    -fx-border-width: 0px 0px 3px 0px;
+}
+
+.boton-login-entrar{
+    -fx-background-color: transparent;
+    -fx-border-style: solid;
+    -fx-border-color:  #0dbf3d;
+    -fx-border-radius: 5px;
+    -fx-text-fill: #f5f4f4;
+    -fx-font-family: "Maiandra GD";
+    -fx-font-size: 18px;
+    -fx-border-width: 3px;
+}
+.boton-login-entrar:hover{
+    -fx-background-color:  #0b0711;
+}
