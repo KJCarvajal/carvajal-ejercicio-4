@@ -1,10 +1,14 @@
 package modelos;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import Conexion.ConexionMySQL;
+import javafx.collections.ObservableList;
 
-public class Usuarios {
-    private IntegerProperty id_usuario;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Usuario {
+    private int id_usuario;
     private String identidad;
     private String nombre;
     private String apellido;
@@ -15,8 +19,8 @@ public class Usuarios {
     private String contrasenia;
     private String tipo_usuario;
 
-    public Usuarios(int id_usuario, String identidad, String nombre, String apellido, String telefono, String direccion, String correo_electronico, String nombre_usuario, String contrasenia, String tipo_usuario) {
-        this.id_usuario = new SimpleIntegerProperty(id_usuario);
+    public Usuario(int id_usuario, String identidad, String nombre, String apellido, String telefono, String direccion, String correo_electronico, String nombre_usuario, String contrasenia, String tipo_usuario) {
+        this.id_usuario = id_usuario;
         this.identidad = identidad;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -29,11 +33,11 @@ public class Usuarios {
     }
 
     public int getId_usuario() {
-        return id_usuario.get();
+        return id_usuario;
     }
 
     public void setId_usuario(int id_usuario) {
-        this.id_usuario = new SimpleIntegerProperty(id_usuario);
+        this.id_usuario = id_usuario;
     }
 
     public String getIdentidad() {
@@ -107,4 +111,44 @@ public class Usuarios {
     public void setTipo_usuario(String tipo_usuario) {
         this.tipo_usuario = tipo_usuario;
     }
+
+    public static void llenarTableView(ObservableList<Usuario> lista){
+        PreparedStatement sentencia = null;
+        try {
+            sentencia = ConexionMySQL.abrirConexion().prepareStatement(
+                    "SELECT * FROM usuario"
+            );
+            ResultSet resultado = sentencia.executeQuery();
+
+            while (resultado.next()) {
+                lista.add(new Usuario(
+                        resultado.getInt("id_usuario"),
+                        resultado.getString("identidad"),
+                        resultado.getString("nombre"),
+                        resultado.getString("apellido"),
+                        resultado.getString("telefono"),
+                        resultado.getString("direccion"),
+                        resultado.getString("correo_electronico"),
+                        resultado.getString("nombre_usuario"),
+                        resultado.getString("contrasenia"),
+                        resultado.getString("tipo_usuario")));
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+//    @Override
+//    public String toString(){
+//        return "Usuario [identidad=" + identidad +
+//                ", nombre =" + nombre +
+//                ", apellido =" + apellido +
+//                ", telefono =" + telefono +
+//                ", direccion =" + direccion +
+//                ", correo_electronico =" + correo_electronico +
+//                ", nombre_usuario =" + nombre_usuario +
+//                ", contrasenia =" + contrasenia +
+//                ", tipo_usuario  =" + tipo_usuario + "]";
+//    }
 }

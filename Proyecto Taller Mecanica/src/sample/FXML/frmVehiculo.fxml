@@ -50,12 +50,12 @@
                </font>
             </Label>
             <TextField fx:id="txtPlaca11" layoutX="288.0" layoutY="272.0" promptText="#######" />
-            <Button fx:id="btnIngresarVehiculo" layoutX="293.0" layoutY="486.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="190.0" styleClass="boton-login-entrar" stylesheets="@../EstilosCss/botones-login.css" text="Ingresar" />
+            <Button fx:id="btnIngresarVehiculo" layoutX="293.0" layoutY="486.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="190.0" styleClass="boton-login-entrar" stylesheets="@../../EstilosCss/botones-login.css" text="Ingresar" />
          </children>
       </AnchorPane>
       <ImageView fx:id="btnImgMecanikMenuInicio" fitHeight="111.0" fitWidth="109.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/piston-logo-verde.png" />
+            <Image url="@../images/piston-logo-verde.png" />
          </image>
       </ImageView>
    </children>

@@ -1,6 +1,7 @@
-package sample;
+package sample.CONTROLLERS;
 
-import javafx.application.Platform;
+
+import Conexion.ConexionMySQL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 public class ControllerLogin implements Initializable {
 
     //region Variables de traidas de Scene Builder
+
     @FXML private Button btnIngresar;
     @FXML private TextField txtUsuario;
     @FXML private PasswordField txtContrasenia;
@@ -41,49 +42,60 @@ public class ControllerLogin implements Initializable {
     }
 
     public void onIngresarbuttonClicked(ActionEvent event) {
+
         Stage stage = null;
         Parent rootPrincipal = null;
+
         try {
             if(event.getSource() == btnIngresar){
                 stage = (Stage) btnIngresar.getScene().getWindow();
-
-
                 if (txtUsuario.getText().isEmpty()){
+
                     showAlert(Alert.AlertType.ERROR, "Error!",
+
                             "Ingrese su nombre de usuario");
                     return;
                 }
+
                 if (txtContrasenia.getText().isEmpty()){
+
                     showAlert(Alert.AlertType.ERROR,"Error!",
+
                             "Ingrese su contraseña");
                     return;
+
                 }
 
                 String usuario = txtUsuario.getText();
                 String contrasenia = txtContrasenia.getText();
 
                 boolean mensaje = comprobarLogin(usuario, contrasenia);
+
                 if (mensaje){
-                    infoBox("Inicio de sesion exitosa", "Info", "Success");
-                    rootPrincipal = FXMLLoader.load(getClass().getResource("frmPrincipal.fxml"));
+                    //infoBox("Inicio de sesion exitosa", "Info", "Success");
+                    rootPrincipal = FXMLLoader.load(getClass().getResource("../FXML/frmPrincipal.fxml"));
                     Scene scenePrincipal = new Scene(rootPrincipal);
                     stage.setScene(scenePrincipal);
+                    stage.setMaximized(true);
                     stage.show();
+
                 } else {
                     infoBox("Ingrese un usuario o contraseña correcta", "Info", "Failed");
-                }
 
+                }
             }
 
         }catch (IOException e){
             System.err.println(e.getMessage());
+
         }
     }
 
     private boolean comprobarLogin(String usuario, String contrasenia) {
         try {
-            PreparedStatement sentenciaParaLogin = ConexionBase.abrirConexion().prepareStatement(
+            PreparedStatement sentenciaParaLogin = ConexionMySQL.abrirConexion().prepareStatement(
                     "SELECT * FROM usuario WHERE nombre_usuario = ? and contrasenia = ?"
+
             );
             sentenciaParaLogin.setString(1, usuario);
             sentenciaParaLogin.setString(2, contrasenia);
@@ -95,9 +107,13 @@ public class ControllerLogin implements Initializable {
 
         }catch (SQLException e){
             System.err.println(e.getMessage());
+
         }
         return false;
+
     }
+
+
 
     public static void infoBox(String infoMessage, String headerText, String title) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -114,5 +130,4 @@ public class ControllerLogin implements Initializable {
         alert.setContentText(message);
         alert.show();
     }
-
 }
