@@ -63,7 +63,6 @@ public class ControllerLogin implements Initializable {
 
                             "Ingrese su contraseña");
                     return;
-
                 }
 
                 String usuario = txtUsuario.getText();
@@ -80,14 +79,12 @@ public class ControllerLogin implements Initializable {
                     stage.show();
 
                 } else {
-                    infoBox("Ingrese un usuario o contraseña correcta", "Info", "Failed");
-
+                    showAlert(Alert.AlertType.ERROR,"Usuario no encontrado", "Usuario o contraseña incorrecta");
                 }
             }
 
         }catch (IOException e){
             System.err.println(e.getMessage());
-
         }
     }
 
@@ -95,7 +92,6 @@ public class ControllerLogin implements Initializable {
         try {
             PreparedStatement sentenciaParaLogin = ConexionMySQL.abrirConexion().prepareStatement(
                     "SELECT * FROM usuario WHERE nombre_usuario = ? and contrasenia = ?"
-
             );
             sentenciaParaLogin.setString(1, usuario);
             sentenciaParaLogin.setString(2, contrasenia);
@@ -112,8 +108,6 @@ public class ControllerLogin implements Initializable {
         return false;
 
     }
-
-
 
     public static void infoBox(String infoMessage, String headerText, String title) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

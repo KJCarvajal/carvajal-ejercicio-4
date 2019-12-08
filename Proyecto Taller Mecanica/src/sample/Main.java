@@ -18,7 +18,6 @@ public class Main extends Application {
         //scene.setFill(Color.RED);
         primaryStage.setScene(sceneLoginUsuario);
         primaryStage.show();
-        //#0dbf3d <-- Color verde primario
     }
 
     public static void main(String[] args) {
