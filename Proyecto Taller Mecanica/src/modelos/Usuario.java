@@ -139,6 +139,37 @@ public class Usuario {
         }
     }
 
+    public static ObservableList<Usuario> datosDeUsuarioBuscado(ObservableList<Usuario> listaDatosUsuario, String usuarioBuscado){
+        PreparedStatement sentencia = null;
+        try {
+            sentencia = ConexionMySQL.abrirConexion().prepareStatement(
+                    "SELECT * FROM usuario WHERE nombre LIKE ?"
+            );
+            sentencia.setString(1, usuarioBuscado + "%");
+            ResultSet resultado = sentencia.executeQuery();
+
+            while (resultado.next()) {
+                listaDatosUsuario.add(new Usuario(
+                        resultado.getInt("id_usuario"),
+                        resultado.getString("identidad"),
+                        resultado.getString("nombre"),
+                        resultado.getString("apellido"),
+                        resultado.getString("telefono"),
+                        resultado.getString("direccion"),
+                        resultado.getString("correo_electronico"),
+                        resultado.getString("nombre_usuario"),
+                        resultado.getString("contrasenia"),
+                        resultado.getString("tipo_usuario")));
+            }
+
+            return listaDatosUsuario;
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return null;
+    }
+
 //    @Override
 //    public String toString(){
 //        return "Usuario [identidad=" + identidad +

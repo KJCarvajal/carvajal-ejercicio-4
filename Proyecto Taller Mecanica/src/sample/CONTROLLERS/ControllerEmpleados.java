@@ -88,20 +88,11 @@ public class ControllerEmpleados implements Initializable {
         actualizarTableViewEmpleados();
     }
 
-    private void actualizarTableViewEmpleados() {
+    private void actualizarTableViewEmpleados(){
         listaEmpleados = FXCollections.observableArrayList();
         Usuario.llenarTableView(listaEmpleados);
         tableViewEmpleado.setItems(listaEmpleados);
-
-        colIdentidad.setCellValueFactory(new PropertyValueFactory<>("identidad"));
-        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        colApellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
-        colTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
-        colDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
-        colCorreo.setCellValueFactory(new PropertyValueFactory<>("correo_electronico"));
-        colNombreUsuario.setCellValueFactory(new PropertyValueFactory<>("nombre_usuario"));
-        colContrasenia.setCellValueFactory(new PropertyValueFactory<>("contrasenia"));
-        colTipoUsuario.setCellValueFactory(new PropertyValueFactory<>("tipo_usuario"));
+        columnasTableViewUsuarios();
     }
 
     public void onRegistarButtonClicked(MouseEvent event) {
@@ -235,20 +226,22 @@ public class ControllerEmpleados implements Initializable {
 
     /**Busqueda parcial del usuario ingresado */
     public void onBuscarCampoUsuarioKeyTyped(KeyEvent event) {
-        try {
-            PreparedStatement pst = ConexionMySQL.abrirConexion().prepareStatement(
-                    "SELECT * FROM usuario WHERE nombre LIKE ?"
-            );
-            pst.setString(1, txtCampoBusqueda.getText().trim() + "%");
+        listaEmpleados = FXCollections.observableArrayList();
+        Usuario.datosDeUsuarioBuscado(listaEmpleados, txtCampoBusqueda.getText().trim());
+        tableViewEmpleado.setItems(listaEmpleados);
 
-            ResultSet rs = pst.executeQuery();
-            if(rs.next()){
-                lblNotificacion.setText(rs.getString("apellido"));
-            } else {
-                lblNotificacion.setText("Usuario no encontrado");
-            }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
+        columnasTableViewUsuarios();
+    }
+
+    private void columnasTableViewUsuarios() {
+        colIdentidad.setCellValueFactory(new PropertyValueFactory<>("identidad"));
+        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        colApellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        colTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        colDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+        colCorreo.setCellValueFactory(new PropertyValueFactory<>("correo_electronico"));
+        colNombreUsuario.setCellValueFactory(new PropertyValueFactory<>("nombre_usuario"));
+        colContrasenia.setCellValueFactory(new PropertyValueFactory<>("contrasenia"));
+        colTipoUsuario.setCellValueFactory(new PropertyValueFactory<>("tipo_usuario"));
     }
 }
