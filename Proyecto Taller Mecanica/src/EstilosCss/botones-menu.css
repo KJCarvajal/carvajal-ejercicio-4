@@ -1,6 +1,6 @@
 .btns-menu-lateral{
-    -fx-border-color:  #0dbf3d;
-    -fx-border-width: 1px 0px 1px 0px;
+    -fx-border-color:  #0dbf3d #0b0711 #0dbf3d #0b0711;
+    -fx-border-width: 0px 0px 1px 5px;
     -fx-border-radius: 0px;
     -fx-background-color:  #0b0711;
     -fx-text-fill: #f5f4f4;
@@ -9,6 +9,20 @@
 
 }
 .btns-menu-lateral:hover{
+    -fx-border-color:  #0dbf3d;
+    -fx-border-width: 0px 0px 1px 5px;
+    -fx-background-color:  #201e2d;
+}
+.btn-actividades-menu-lateral{
+    -fx-border-color:  #0dbf3d #0b0711 #0dbf3d #0b0711;
+    -fx-border-width: 1px 0px 1px 5px;
+    -fx-border-radius: 0px;
+    -fx-background-color:  #0b0711;
+    -fx-text-fill: #f5f4f4;
+    -fx-font-size: 18px;
+    -fx-font-family: "Maiandra GD";
+}
+.btn-actividades-menu-lateral:hover{
     -fx-border-color:  #0dbf3d;
     -fx-border-width: 1px 0px 1px 5px;
     -fx-background-color:  #201e2d;
@@ -37,9 +51,9 @@
 }
 
 .btn-usuario-actual{
-    -fx-border-color:  #0dbf3d;
+    -fx-border-color: #0b0711 #0b0711 #0dbf3d #0b0711;
     -fx-border-radius: 0px;
-    -fx-border-width: 1px 0px 1px 0px;
+    -fx-border-width: 3px 0px 1px 0px;
     -fx-background-color:  #0b0711;
     -fx-text-fill: #f5f4f4;
     -fx-font-size: 18px;
@@ -47,6 +61,11 @@
 }
 .btn-usuario-actual:hover{
     -fx-border-color:  #0dbf3d;
-    -fx-border-width: 0px 0px 3px 0px;
     -fx-background-color:  #201e2d;
+}
+
+.labels-menu-central{
+    -fx-text-fill: #f5f4f4;
+    -fx-font-size: 24px;
+    -fx-font-family: "Maiandra GD";
 }

@@ -3,6 +3,7 @@ module Proyecto.Taller.Mecanica {
     requires javafx.controls;
     requires java.sql;
     requires kotlin.stdlib;
+    requires java.mail;
 
     opens sample;
 }
