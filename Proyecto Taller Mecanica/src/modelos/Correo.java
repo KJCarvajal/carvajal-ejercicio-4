@@ -1,4 +1,4 @@
-package com.Revan;
+package modelos;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -9,7 +9,6 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class Correo {
-
 
     public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
         // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.

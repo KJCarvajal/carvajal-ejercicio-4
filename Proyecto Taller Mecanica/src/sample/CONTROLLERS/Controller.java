@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -30,7 +31,7 @@ public class Controller implements Initializable {
     //endregion
 
     //region Variable Locales
-    Stage stage = null; //Para abrir formularios
+    private Stage stage = null; //Para abrir formularios
 
     //endregion
 
@@ -55,9 +56,11 @@ public class Controller implements Initializable {
         }
     }
 
-    public void onExitButtonClicked(MouseEvent event) {
-        Platform.exit();
-        System.exit(0);
+    public void onButtonInicioMenuPrincipal(MouseEvent event){
+        borderPanePrincipal.setCenter(panelMenuInicial);
+        Scene scene = new Scene(borderPanePrincipal);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void onEmpleadosButtonClicked(MouseEvent event) throws IOException{
@@ -70,11 +73,24 @@ public class Controller implements Initializable {
         Scene scene = new Scene(borderPanePrincipal);
         stage.setScene(scene);
         stage.show();
-
     }
 
-    public void onButtonInicioMenuPrincipal(MouseEvent event) {
+    public void onAjustesCorreoButtonClicked(MouseEvent event) throws IOException{
 
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../FXML/frmAjustesCorreo.fxml"));
+        AnchorPane rootAjustes = loader.load();
+
+        borderPanePrincipal.setCenter(rootAjustes); //Para que el nuevo formulario quede en el centro
+        Scene scene = new Scene(borderPanePrincipal);
+        stage.setScene(scene);
+        stage.show();
     }
+
+    public void onExitButtonClicked(MouseEvent event) {
+        Platform.exit();
+        System.exit(0);
+    }
+
 }
 

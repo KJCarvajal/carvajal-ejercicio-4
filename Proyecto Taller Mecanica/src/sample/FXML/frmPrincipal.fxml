@@ -7,14 +7,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="panelExterior" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="750.0" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CONTROLLERS.Controller">
+<AnchorPane fx:id="panelExterior" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1300.0" prefHeight="600.0" prefWidth="1300.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CONTROLLERS.Controller">
    <children>
-      <StackPane prefHeight="500.0" prefWidth="540.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane prefHeight="600.0" prefWidth="1300.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <BorderPane fx:id="borderPanePrincipal" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" StackPane.alignment="CENTER">
+            <BorderPane fx:id="borderPanePrincipal" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1300.0" StackPane.alignment="CENTER">
                <left>
                   <VBox fx:id="VBoxMenuLateralLeft" prefHeight="500.0" prefWidth="180.0" style="-fx-background-color: #0b0711;" BorderPane.alignment="TOP_LEFT">
                      <children>
@@ -30,7 +31,7 @@
                               <Insets />
                            </opaqueInsets>
                         </Button>
-                        <Button fx:id="btnActividades" ellipsisString="" mnemonicParsing="false" prefHeight="51.0" prefWidth="202.0" styleClass="btns-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="  Actividades">
+                        <Button fx:id="btnActividades" ellipsisString="" mnemonicParsing="false" prefHeight="51.0" prefWidth="202.0" styleClass="btn-actividades-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="  Actividades">
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -78,6 +79,18 @@
                               <Insets />
                            </opaqueInsets>
                         </Button>
+                        <Button fx:id="btnAjustes" ellipsisString="" mnemonicParsing="false" onMouseClicked="#onAjustesCorreoButtonClicked" prefHeight="51.0" prefWidth="202.0" styleClass="btns-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="         Ajustes">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/ajustes-menu-lateral.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
                         <Button fx:id="btnSalir" ellipsisString="" mnemonicParsing="false" onMouseClicked="#onExitButtonClicked" prefHeight="51.0" prefWidth="202.0" styleClass="btns-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="          Salir">
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -94,7 +107,7 @@
                   </VBox>
                </left>
                <top>
-                  <BorderPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #0b0711;" BorderPane.alignment="CENTER">
+                  <BorderPane prefHeight="50.0" prefWidth="1300.0" style="-fx-background-color: #0b0711;" BorderPane.alignment="CENTER">
                      <left>
                         <Button fx:id="btnMenuOculto" mnemonicParsing="false" onMouseClicked="#onOcultarMenuClicked" prefHeight="50.0" prefWidth="65.0" styleClass="btn-ocultar-menu" stylesheets="@../../EstilosCss/botones-menu.css" BorderPane.alignment="CENTER">
                            <graphic>
@@ -126,12 +139,42 @@
                   </BorderPane>
                </top>
                <center>
-                  <AnchorPane fx:id="panelMenuInicial" prefHeight="500.0" prefWidth="550.0" style="-fx-background-color: #201e2d;" BorderPane.alignment="CENTER">
+                  <AnchorPane fx:id="panelMenuInicial" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #201e2d;" BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="336.0" layoutY="14.0" prefHeight="73.0" prefWidth="220.0" styleClass="btns-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="Aqui va todo lo principal" />
-                        <Label layoutX="14.0" layoutY="14.0" prefHeight="73.0" prefWidth="220.0" styleClass="btns-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="Aqui va todo lo principal" />
-                        <Label layoutX="14.0" layoutY="362.0" prefHeight="73.0" prefWidth="220.0" styleClass="btns-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="Aqui va todo lo principal" />
-                        <Label layoutX="336.0" layoutY="362.0" prefHeight="73.0" prefWidth="220.0" styleClass="btns-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="Aqui va todo lo principal" />
+                        <HBox layoutX="95.0" layoutY="182.0" prefHeight="170.0" prefWidth="800.0" spacing="200.0">
+                           <children>
+                              <Label contentDisplay="TOP" ellipsisString="" prefHeight="90.0" prefWidth="159.0" styleClass="labels-menu-central" stylesheets="@../../EstilosCss/botones-menu.css" text="0  actividades" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fx:id="btnImgMecanikMenuInicio111" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/conta-actividades.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label contentDisplay="TOP" ellipsisString="" prefHeight="90.0" prefWidth="159.0" styleClass="labels-menu-central" stylesheets="@../../EstilosCss/botones-menu.css" text="0 clientes" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fx:id="btnImgMecanikMenuInicio11" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/conta-clientes.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label contentDisplay="TOP" ellipsisString="" prefHeight="90.0" prefWidth="159.0" styleClass="labels-menu-central" stylesheets="@../../EstilosCss/botones-menu.css" text="0 vehiculos" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fx:id="btnImgMecanikMenuInicio1" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/conta-vehiculos.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </center>
