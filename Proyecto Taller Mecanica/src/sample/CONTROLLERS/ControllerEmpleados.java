@@ -110,10 +110,12 @@ public class ControllerEmpleados implements Initializable {
 
     public void onGuardarButtonClicked(MouseEvent event) {
         Usuario usuario = tableViewEmpleado.getSelectionModel().getSelectedItem();
+
+        System.out.println(usuario);
         PreparedStatement pst = null;
 
         try {
-            if(usuario.getId_usuario() > 0){
+            if(usuario != null && usuario.getId_usuario() > 0){
                 if (verificarCamposVacios()) {
                     pst = ConexionMySQL.abrirConexion().prepareStatement(
                             "UPDATE usuario SET identidad =?, nombre =?, apellido =?, telefono =?, direccion =?, correo_electronico =?, nombre_usuario =?, contrasenia =?, tipo_usuario =? WHERE id_usuario = " + usuario.getId_usuario()
@@ -179,7 +181,7 @@ public class ControllerEmpleados implements Initializable {
         Usuario usuario = tableViewEmpleado.getSelectionModel().getSelectedItem();
         lblNotificacion.setText("");
 
-        if(usuario.getId_usuario() > 0){
+        if(usuario != null && usuario.getId_usuario() > 0){
             VBoxFormularioNuevoEmpleado.setVisible(true);
             lblNuevoEmpleado.setText("Editar usuario");
             //-----------------------------------------

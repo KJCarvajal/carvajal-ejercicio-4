@@ -63,13 +63,25 @@ public class Controller implements Initializable {
         stage.show();
     }
 
+    public void onClientesButtonClicked(MouseEvent event) throws IOException{
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../FXML/frmClientes.fxml"));
+        AnchorPane rootEmpleados = loader.load();
+
+        borderPanePrincipal.setCenter(rootEmpleados);
+        Scene scene = new Scene(borderPanePrincipal);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void onEmpleadosButtonClicked(MouseEvent event) throws IOException{
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../FXML/frmEmpleados.fxml"));
         AnchorPane rootEmpleados = loader.load();
 
-        borderPanePrincipal.setCenter(rootEmpleados); //Para que el nuevo formulario quede en el centro
+        borderPanePrincipal.setCenter(rootEmpleados);
         Scene scene = new Scene(borderPanePrincipal);
         stage.setScene(scene);
         stage.show();
