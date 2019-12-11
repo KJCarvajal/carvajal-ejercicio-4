@@ -19,6 +19,8 @@ public class Usuario {
     private String contrasenia;
     private String tipo_usuario;
 
+    public static int idUsuarioForaneo; //Para las tablas que tienen como llave foranea el id_usuario
+
     public Usuario(int id_usuario, String identidad, String nombre, String apellido, String telefono, String direccion, String correo_electronico, String nombre_usuario, String contrasenia, String tipo_usuario) {
         this.id_usuario = id_usuario;
         this.identidad = identidad;

@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import modelos.Usuario;
 
 import java.io.IOException;
 import java.net.URL;
@@ -98,6 +99,7 @@ public class ControllerLogin implements Initializable {
 
             ResultSet resultSet = sentenciaParaLogin.executeQuery();
             if (resultSet.next()){
+                Usuario.idUsuarioForaneo = resultSet.getInt("id_usuario");
                 return true;
             }
 
