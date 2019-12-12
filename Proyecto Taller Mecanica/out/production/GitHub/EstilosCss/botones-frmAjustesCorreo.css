@@ -1,0 +1,42 @@
+.text-field-campos-correo{
+    -fx-text-fill: #f5f4f4;
+    -fx-font-size: 18px;
+    -fx-font-family: "Maiandra GD";
+    -fx-border-color:  #0dbf3d;
+    -fx-border-width: 0px 0px 1px 0px;
+
+}
+.text-field-campos-correo:hover{
+    -fx-border-width: 0px 0px 3px 0px;
+}
+
+.label-permiso-de-informes{
+    -fx-font-size: 24px;
+    -fx-font-family: "Maiandra GD";
+    -fx-text-fill: #f5f4f4;
+}
+
+.boton-guardar-cambios{
+    -fx-background-color: transparent;
+    -fx-border-style: solid;
+    -fx-border-color:  #0dbf3d;
+    -fx-border-radius: 5px;
+    -fx-text-fill: #f5f4f4;
+    -fx-font-family: "Maiandra GD";
+    -fx-font-size: 18px;
+    -fx-border-width: 3px;
+}
+.boton-guardar-cambios:hover{
+    -fx-background-color:  #0b0711;
+}
+
+.check-box-permiso-correo{
+    -fx-text-fill: #f5f4f4;
+    -fx-font-family: "Maiandra GD";
+    -fx-font-size: 18px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+.check-box-permiso-correo:hover{
+    -fx-background-color:  #0b0711;
+}

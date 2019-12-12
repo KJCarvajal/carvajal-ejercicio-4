@@ -1,5 +1,7 @@
 package sample.CONTROLLERS;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import modelos.Cliente;
@@ -64,6 +66,10 @@ public class ControllerClientes implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle) {
         //tableViewCliente.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        txtIdentidad.addEventFilter(KeyEvent.ANY, filtrarSoloNumeros);
+        txtNombre.addEventFilter(KeyEvent.ANY, filtrarSoloLetras);
+        txtApellido.addEventFilter(KeyEvent.ANY, filtrarSoloLetras);
+        txtTelefono.addEventFilter(KeyEvent.ANY, filtrarSoloNumeros);
         actualizarTableViewClientes();
     }
 
@@ -232,5 +238,56 @@ public class ControllerClientes implements Initializable {
         colTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
         colDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
     }
+
+    private EventHandler<KeyEvent> filtrarSoloLetras = new EventHandler<KeyEvent>() {
+        boolean negarContenido = false;
+
+        @Override
+        public void handle(KeyEvent event) {
+            if(negarContenido){
+                event.consume();
+            }
+            String temp = event.getCode().toString();
+            if(!temp.matches("[a-zA-z\\s]") //La \s permite los espacios
+                    && event.getCode() != KeyCode.SHIFT){
+                if(event.getEventType() == KeyEvent.KEY_PRESSED){
+                    negarContenido = true;
+                } else if (event.getEventType() == KeyEvent.KEY_RELEASED) {
+                    negarContenido = false;
+                }
+            }
+        }
+    };
+
+    private EventHandler<KeyEvent> filtrarSoloNumeros = new EventHandler<KeyEvent>() {
+        boolean negarContenido = false;
+        static final int LONGITUD_MAX_ID = 11;
+
+        @Override
+        public void handle(KeyEvent event) {
+            TextField txtCampo = (TextField) event.getSource();
+
+            if(negarContenido){
+                event.consume();
+            }
+
+            if(!event.getText().matches("[0-9]")
+                    && event.getCode() != KeyCode.BACK_SPACE){
+                if(event.getEventType() == KeyEvent.KEY_PRESSED){
+                    negarContenido = true;
+                } else if (event.getEventType() == KeyEvent.KEY_RELEASED){
+                    negarContenido = false;
+                }
+            }
+            if(txtCampo.getText().length() > LONGITUD_MAX_ID - 1
+                    && event.getCode() != KeyCode.BACK_SPACE){
+                if(event.getEventType() == KeyEvent.KEY_PRESSED){
+                    negarContenido = true;
+                } else if (event.getEventType() == KeyEvent.KEY_RELEASED){
+                    negarContenido = false;
+                }
+            }
+        }
+    };
 
 }

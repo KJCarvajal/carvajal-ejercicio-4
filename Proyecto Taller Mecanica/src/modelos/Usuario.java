@@ -2,6 +2,8 @@ package modelos;
 
 import Conexion.ConexionMySQL;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import sample.CONTROLLERS.ControllerEmpleados;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,7 +88,7 @@ public class Usuario {
         return correo_electronico;
     }
 
-    public void setCorreo_electronico(String correo_electronico) {
+    public void setCorreo_electronico(String correo_electronico){
         this.correo_electronico = correo_electronico;
     }
 
@@ -172,16 +174,20 @@ public class Usuario {
         return null;
     }
 
-//    @Override
-//    public String toString(){
-//        return "Usuario [identidad=" + identidad +
-//                ", nombre =" + nombre +
-//                ", apellido =" + apellido +
-//                ", telefono =" + telefono +
-//                ", direccion =" + direccion +
-//                ", correo_electronico =" + correo_electronico +
-//                ", nombre_usuario =" + nombre_usuario +
-//                ", contrasenia =" + contrasenia +
-//                ", tipo_usuario  =" + tipo_usuario + "]";
-//    }
+    public static boolean eliminarRegistroSeleccionado(int idUsuario){
+        PreparedStatement sentencia = null;
+        try {
+            sentencia = ConexionMySQL.abrirConexion().prepareStatement(
+                    "DELETE FROM usuario WHERE id_usuario = ?"
+            );
+            sentencia.setInt(1, idUsuario);
+            sentencia.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
+
 }
