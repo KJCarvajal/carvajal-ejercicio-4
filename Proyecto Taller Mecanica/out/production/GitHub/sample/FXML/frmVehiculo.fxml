@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="575.0" prefWidth="553.0" style="-fx-background-color: #201e2d;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.VehiculoForm">
+   <children>
+      <Label layoutX="192.0" layoutY="14.0" text="Ingrese los datos del vehiculo" textFill="#0dbf3d" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Maiandra GD" size="20.0" />
+         </font>
+      </Label>
+      <TextField layoutX="227.0" layoutY="107.0" />
+      <Button layoutX="496.0" layoutY="363.0" mnemonicParsing="false" text="Button" />
+      <ColorPicker layoutX="236.0" layoutY="230.0" />
+      <AnchorPane layoutX="-69.0" layoutY="-14.0" prefHeight="567.0" prefWidth="635.0" style="-fx-background-color: #201e2d;">
+         <children>
+            <Label layoutX="254.0" layoutY="14.0" text="Ingrese los datos del vehiculo" textFill="#0dbf3d" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="Maiandra GD" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPlaca" layoutX="288.0" layoutY="102.0" promptText="#######" />
+            <ColorPicker layoutX="297.0" layoutY="395.0" promptText="Color del vehiculo" />
+            <Label layoutX="303.0" layoutY="67.0" text="Placa del vehiculo" textFill="#0dbf3d" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="Maiandra GD" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="346.0" layoutY="146.0" text="Modelo" textFill="#0dbf3d" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="Maiandra GD" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPlaca1" layoutX="288.0" layoutY="180.0" promptText="#######" />
+            <Label layoutX="353.0" layoutY="331.0" text="Color " textFill="#0dbf3d" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="Maiandra GD" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="355.0" layoutY="231.0" text="Marca" textFill="#0dbf3d" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="Maiandra GD" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPlaca11" layoutX="288.0" layoutY="272.0" promptText="#######" />
+            <Button fx:id="btnIngresarVehiculo" layoutX="293.0" layoutY="486.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="190.0" styleClass="boton-login-entrar" stylesheets="@../../EstilosCss/botones-login.css" text="Ingresar" />
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="btnImgMecanikMenuInicio" fitHeight="111.0" fitWidth="109.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/piston-logo-verde.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
