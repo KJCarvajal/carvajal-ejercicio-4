@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1100.0" style="-fx-background-color: #201e2d;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CONTROLLERS.ControllerEmpleados">
+<AnchorPane prefHeight="650.0" prefWidth="1100.0" style="-fx-background-color: #201e2d;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CONTROLLERS.ControllerEmpleados">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -52,6 +52,7 @@
                   <Button fx:id="btnNuevoEmpleado" layoutX="548.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onRegistarButtonClicked" prefHeight="45.0" prefWidth="123.0" styleClass="boton-nuevo-usuario" stylesheets="@../../EstilosCss/btns-frmEmpleados.css" text="Nuevo" />
                   <Label fx:id="lblNotificacion" layoutX="35.0" layoutY="587.0" prefHeight="29.0" prefWidth="381.0" styleClass="label-notificacion-errores" stylesheets="@../../EstilosCss/btns-frmEmpleados.css" />
                   <Button fx:id="btnNuevoEmpleado1" layoutX="690.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onModificarButtonClicked" prefHeight="45.0" prefWidth="123.0" styleClass="boton-nuevo-usuario" stylesheets="@../../EstilosCss/btns-frmEmpleados.css" text="Editar" />
+                  <Button fx:id="btnNuevoEmpleado1" layoutX="830.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onEliminarButtonClicked" prefHeight="45.0" prefWidth="123.0" styleClass="boton-nuevo-usuario" stylesheets="@../../EstilosCss/btns-frmEmpleados.css" text="Eliminar" />
                </children>
                <BorderPane.margin>
                   <Insets />

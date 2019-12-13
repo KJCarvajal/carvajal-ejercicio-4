@@ -63,13 +63,48 @@ public class Controller implements Initializable {
         stage.show();
     }
 
+    public void onActividadesButtonClicked(MouseEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../FXML/frmActividades.fxml"));
+        AnchorPane rootActividades = loader.load();
+
+        borderPanePrincipal.setCenter(rootActividades);
+        Scene scene = new Scene(borderPanePrincipal);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void onClientesButtonClicked(MouseEvent event) throws IOException{
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../FXML/frmClientes.fxml"));
-        AnchorPane rootEmpleados = loader.load();
+        AnchorPane rootClientes = loader.load();
 
-        borderPanePrincipal.setCenter(rootEmpleados);
+        borderPanePrincipal.setCenter(rootClientes);
+        Scene scene = new Scene(borderPanePrincipal);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void onVehiculosButtonClicked(MouseEvent event) throws IOException{
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../FXML/frmVehiculos.fxml"));
+        AnchorPane rootVehiculo = loader.load();
+
+        borderPanePrincipal.setCenter(rootVehiculo);
+        Scene scene = new Scene(borderPanePrincipal);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void onRepuestoButtonClicked(MouseEvent event) throws IOException{
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../FXML/frmRepuestos.fxml"));
+        AnchorPane rootRepuesto = loader.load();
+
+        borderPanePrincipal.setCenter(rootRepuesto);
         Scene scene = new Scene(borderPanePrincipal);
         stage.setScene(scene);
         stage.show();

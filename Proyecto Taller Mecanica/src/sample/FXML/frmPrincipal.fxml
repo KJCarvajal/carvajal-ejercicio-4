@@ -31,7 +31,7 @@
                               <Insets />
                            </opaqueInsets>
                         </Button>
-                        <Button fx:id="btnActividades" ellipsisString="" mnemonicParsing="false" prefHeight="51.0" prefWidth="202.0" styleClass="btn-actividades-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="  Actividades">
+                        <Button fx:id="btnActividades" ellipsisString="" mnemonicParsing="false" onMouseClicked="#onActividadesButtonClicked" prefHeight="51.0" prefWidth="202.0" styleClass="btn-actividades-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="  Actividades">
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -55,7 +55,7 @@
                               <Insets />
                            </opaqueInsets>
                         </Button>
-                        <Button fx:id="btnVehiculos" ellipsisString="" mnemonicParsing="false" prefHeight="51.0" prefWidth="202.0" styleClass="btns-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="    Vehiculos">
+                        <Button fx:id="btnVehiculos" ellipsisString="" mnemonicParsing="false" onMouseClicked="#onVehiculosButtonClicked" prefHeight="51.0" prefWidth="202.0" styleClass="btns-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="    Vehiculos">
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -67,7 +67,7 @@
                               <Insets />
                            </opaqueInsets>
                         </Button>
-                        <Button fx:id="btnRepuestos" ellipsisString="" mnemonicParsing="false" prefHeight="51.0" prefWidth="202.0" styleClass="btns-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="   Repuestos">
+                        <Button fx:id="btnRepuestos" ellipsisString="" mnemonicParsing="false" onMouseClicked="#onRepuestoButtonClicked" prefHeight="51.0" prefWidth="202.0" styleClass="btns-menu-lateral" stylesheets="@../../EstilosCss/botones-menu.css" text="   Repuestos">
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
