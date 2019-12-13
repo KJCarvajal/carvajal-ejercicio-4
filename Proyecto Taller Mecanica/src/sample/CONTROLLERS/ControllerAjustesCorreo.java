@@ -28,7 +28,6 @@ public class ControllerAjustesCorreo {
     String remitente= "mecanik2019@gmail.com";
     String clave = "KevinBrian2019";
 
-
     //endregion
 
     public void onGuardarCambiosDeEmpresa(MouseEvent event) {

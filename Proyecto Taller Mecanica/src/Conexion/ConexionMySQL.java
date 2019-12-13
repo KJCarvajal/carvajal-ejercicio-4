@@ -9,8 +9,8 @@ public class ConexionMySQL {
     private static Connection conn;
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String user = "root";
-    private static final String password = "";
-    private static final String url = "jdbc:mysql://localhost:3306/mecanica?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static final String password = "Nemurenai8";
+    private static final String url = "jdbc:mysql://localhost:3306/base-mecanica-v6?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     private static int contador = 0;
 
