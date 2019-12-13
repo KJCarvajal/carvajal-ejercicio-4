@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1100.0" style="-fx-background-color: #201e2d;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CONTROLLERS.ControllerPresupuesto">
+   <children>
+      <BorderPane prefHeight="650.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="text-field-buscar" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="21.0" layoutY="22.0" styleClass="label-empleados-title" stylesheets="@../../EstilosCss/btns-frmEmpleados.css" text="PRESUPUESTO" />
+                  <TextField fx:id="txtCodigoActividad" layoutX="200.0" layoutY="16.0" prefHeight="40.0" prefWidth="260.0" promptText="Numero de actividad" style="-fx-background-color: #201e2d;" styleClass="text-field-buscar" stylesheets="@../../EstilosCss/btns-frmEmpleados.css" />
+                  <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="460.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/citas-autos.png" />
+                     </image></ImageView>
+                  <Button fx:id="btnGenerar" layoutX="548.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onGenerarButtonClicked" prefHeight="45.0" prefWidth="123.0" styleClass="boton-nuevo-usuario" stylesheets="@../../EstilosCss/btns-frmEmpleados.css" text="Generar" />
+                  <SplitPane dividerPositions="0.42685370741482964" layoutX="21.0" layoutY="75.0" orientation="VERTICAL" prefHeight="501.0" prefWidth="651.0">
+                    <items>
+                      <AnchorPane fx:id="spInformacion" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="1000.0">
+                           <children>
+                              <Label layoutX="38.0" layoutY="18.0" text="Cliente">
+                                 <font>
+                                    <Font name="System Bold" size="23.0" />
+                                 </font></Label>
+                              <Label layoutX="76.0" layoutY="65.0" text="Identidad:" />
+                              <Label layoutX="76.0" layoutY="102.0" text="Nombre:" />
+                              <Label layoutX="76.0" layoutY="136.0" text="Telefono:" />
+                              <Label layoutX="76.0" layoutY="172.0" text="Direccion:" />
+                              <Label layoutX="508.0" layoutY="26.0" text="Presupuesto N°">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Label>
+                              <TextField fx:id="txtIdentidad" editable="false" layoutX="167.0" layoutY="61.0" prefHeight="25.0" prefWidth="310.0" />
+                              <TextField fx:id="txtNombre" editable="false" layoutX="167.0" layoutY="98.0" prefHeight="25.0" prefWidth="310.0" />
+                              <TextField fx:id="txtTelefono" editable="false" layoutX="167.0" layoutY="132.0" prefHeight="25.0" prefWidth="310.0" />
+                              <TextField fx:id="txtDireccion" editable="false" layoutX="167.0" layoutY="168.0" prefHeight="25.0" prefWidth="310.0" />
+                           </children></AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="282.0" prefWidth="649.0">
+                           <children>
+                              <TableView fx:id="tableViewReporte" layoutX="13.0" layoutY="14.0" prefHeight="224.0" prefWidth="623.0">
+                                <columns>
+                                  <TableColumn fx:id="colPlaca" prefWidth="82.0" text="Placa" />
+                                  <TableColumn fx:id="colActividad" prefWidth="146.0" text="Actividad" />
+                                    <TableColumn fx:id="colDescripcion" prefWidth="312.0" text="Descripcion" />
+                                    <TableColumn fx:id="colValor" prefWidth="82.0" text="Valor" />
+                                </columns>
+                              </TableView>
+                              <Label layoutX="487.0" layoutY="252.0" text="TOTAL:" />
+                              <TextField fx:id="txtTotal" editable="false" layoutX="541.0" layoutY="248.0" prefHeight="25.0" prefWidth="94.0" />
+                           </children></AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children></Pane>
+         </center></BorderPane>
+   </children>
+</AnchorPane>
