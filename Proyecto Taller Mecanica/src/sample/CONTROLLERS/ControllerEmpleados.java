@@ -234,7 +234,7 @@ public class ControllerEmpleados implements Initializable {
                     lblNotificacion.setTextFill(Color.rgb(13, 191, 61));
                     actualizarTableViewEmpleados();
                 } else {
-                    lblNotificacion.setText("No se pudo eliminar el cliente");
+                    lblNotificacion.setText("No se pudo eliminar el usuario");
                     lblNotificacion.setTextFill(Color.rgb(237, 29, 24));
                 }
             }

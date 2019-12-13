@@ -28,9 +28,6 @@ public class ControllerAjustesCorreo {
     String remitente= "mecanik2019@gmail.com";
     String clave = "KevinBrian2019";
 
-
-
-
     //endregion
 
     public void onGuardarCambiosDeEmpresa(MouseEvent event) {
@@ -53,10 +50,10 @@ else {
         showAlert(Alert.AlertType.ERROR, "Error!", "Las contraseñas no son similares");
 
     }
-    txtCorreoPersonal.setText(null);
-    txtConfirmarContrasenia.setText(null);
-    txtContraseniaCorreoEmpresa.setText(null);
-    txtCorreoEmpresa.setText(null);
+    txtCorreoPersonal.setText("");
+    txtConfirmarContrasenia.setText("");
+    txtContraseniaCorreoEmpresa.setText("");
+    txtCorreoEmpresa.setText("");
 }
 
     }
@@ -68,6 +65,7 @@ else {
             VBoxCamposCorreos.setDisable(true);
         }
     }
+
     private static void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);

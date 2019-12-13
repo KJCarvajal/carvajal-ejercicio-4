@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
+import modelos.Actividad;
 import modelos.Cliente;
 import modelos.Usuario;
 import Conexion.ConexionMySQL;
@@ -20,38 +21,48 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
-public class ControllerClientes implements Initializable {
+public class ControllerActividades implements Initializable {
 
     //region Variables de traidas de Scene Builder
     //Para llenar el tableView
     @FXML
-    private TableView<Cliente> tableViewCliente;
+    private TableView<Actividad> tableViewActividades;
     @FXML
-    private TableColumn<Cliente, String> colIdentidad;
+    private TableColumn<Actividad, String> colPlaca;
     @FXML
-    private TableColumn<Cliente, String> colNombre;
+    private TableColumn<Actividad, String> colNombre;
     @FXML
-    private TableColumn<Cliente, String> colApellido;
+    private TableColumn<Actividad, String> colApellido;
     @FXML
-    private TableColumn<Cliente, String> colTelefono;
+    private TableColumn<Actividad, String> colActividad;
     @FXML
-    private TableColumn<Cliente, String> colDireccion;
+    private TableColumn<Actividad, String> colDescripcion;
+    @FXML
+    private TableColumn<Actividad, String> colCantidad;
+    @FXML
+    private TableColumn<Actividad, String> colRepuesto;
+    @FXML
+    private TableColumn<Actividad, String> colMonto;
 
     //Para el registro de clientes
     @FXML
     private Label lblNuevoCliente;
     @FXML
-    private VBox VBoxFormularioNuevoCliente;
+    private VBox VBoxFormularioActividad;
     @FXML
-    private TextField txtIdentidad;
+    private TextField txtPlaca;
     @FXML
     private TextField txtNombre;
     @FXML
     private TextField txtApellido;
     @FXML
-    private TextField txtTelefono;
+    private ComboBox<Actividad> cbBoxRepuesto;
     @FXML
-    private TextField txtDireccion;
+    private TextField txtActividad;
+    @FXML
+    private TextField txtDescripcion;
+    @FXML
+    private TextField txtCantidad;
     @FXML
     private Label lblNotificacion;
     @FXML
@@ -59,94 +70,94 @@ public class ControllerClientes implements Initializable {
     //endregion
 
     //region Variable Locales
-    private ObservableList<Cliente> listaClientes;
+    private ObservableList<Actividad> listaActividades;
+    private int idVehiculoDePlacaIngresada;
+    private int idRepuestoSeleccionado;
 
     //endregion
 
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle) {
-        //tableViewCliente.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        txtIdentidad.addEventFilter(KeyEvent.ANY, filtrarSoloNumeros);
-        txtNombre.addEventFilter(KeyEvent.ANY, filtrarSoloLetras);
-        txtApellido.addEventFilter(KeyEvent.ANY, filtrarSoloLetras);
-        txtTelefono.addEventFilter(KeyEvent.ANY, filtrarSoloNumeros);
-        actualizarTableViewClientes();
+        //tableViewActividades.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//        txtCantidad.addEventFilter(KeyEvent.ANY, filtrarSoloNumeros);
+//        txtActividad.addEventFilter(KeyEvent.ANY, filtrarSoloLetras);
+        actualizarTableViewActividades();
     }
 
-    private void actualizarTableViewClientes(){
-        listaClientes = FXCollections.observableArrayList();
-        Cliente.llenarTableView(listaClientes);
-        tableViewCliente.setItems(listaClientes);
+    private void actualizarTableViewActividades(){
+        listaActividades = FXCollections.observableArrayList();
+        Actividad.llenarTableView(listaActividades);
+        tableViewActividades.setItems(listaActividades);
         columnasTableViewClientes();
     }
 
     public void onRegistarButtonClicked(MouseEvent event) {
-        actualizarTableViewClientes();
-        VBoxFormularioNuevoCliente.setVisible(true);
-        lblNuevoCliente.setText("Nuevo cliente");
+        actualizarTableViewActividades();
+        VBoxFormularioActividad.setVisible(true);
+        lblNuevoCliente.setText("Nueva actividad");
         lblNotificacion.setText("");
         vaciarCampos();
     }
 
     public void onCancelarRegistroClicked(MouseEvent event) {
-        VBoxFormularioNuevoCliente.setVisible(false);
+        VBoxFormularioActividad.setVisible(false);
 
     }
 
     public void onGuardarButtonClicked(MouseEvent event) {
-        Cliente cliente = tableViewCliente.getSelectionModel().getSelectedItem();
+        Actividad actividad = tableViewActividades.getSelectionModel().getSelectedItem();
         int usuarioEnLinea = Usuario.idUsuarioForaneo; //Traido desde el login controller
 
         PreparedStatement pst = null;
         try {
-            if(cliente != null && cliente.getId_cliente() > 0){
+            if(actividad != null && actividad.getId_hojareporte() > 0){
                 if (verificarCamposVacios()) {
-                    pst = ConexionMySQL.abrirConexion().prepareStatement(
-                            "UPDATE cliente SET identidad =?, nombre =?, apellido =?, telefono =?, direccion =? WHERE id_cliente = " + cliente.getId_cliente()
+                    pst = ConexionMySQL.abrirConexion().prepareStatement(/////////////////////////AQUI
+                            "UPDATE hojareporte SET actividad =?, descripcion =?, cantidad =?, id_repuesto = ? WHERE id_hojareporte = " + actividad.getId_hojareporte()
                     );
-                    pst.setString(1, txtIdentidad.getText().trim());
-                    pst.setString(2, txtNombre.getText().trim());
-                    pst.setString(3, txtApellido.getText().trim());
-                    pst.setString(4, txtTelefono.getText().trim());
-                    pst.setString(5, txtDireccion.getText().trim());
+                    pst.setString(1, txtActividad.getText().trim());
+                    pst.setString(2, txtDescripcion.getText().trim());
+                    pst.setString(3, txtCantidad.getText().trim());
+//                    pst.setString(4, idRepuestoSeleccionado;
+//                    pst.setString(5, actividad.getFkid_vehiculo();
                     pst.executeUpdate();
 
                     lblNotificacion.setText("Modificacion exitosa");
                     lblNotificacion.setTextFill(Color.rgb(13, 191, 61));
                     vaciarCampos();
-                    actualizarTableViewClientes(); //Para actualizar los cambios
-                    VBoxFormularioNuevoCliente.setVisible(false);
+                    actualizarTableViewActividades(); //Para actualizar los cambios
+                    VBoxFormularioActividad.setVisible(false);
 
                 } else {
                     lblNotificacion.setText("Existen campos vacios");
                     lblNotificacion.setTextFill(Color.rgb(237, 29, 24));
-                    VBoxFormularioNuevoCliente.setVisible(true);
+                    VBoxFormularioActividad.setVisible(true);
                 }
 
             } else {
                 if (verificarCamposVacios()) {
                     pst = ConexionMySQL.abrirConexion().prepareStatement(
-                            "INSERT INTO cliente VALUES(?,?,?,?,?,?,?)"
+                            "INSERT INTO hojareporte VALUES(?,?,?,?,?,?,?)"
                     );
                     pst.setString(1, "0");
-                    pst.setString(2, txtIdentidad.getText().trim());
-                    pst.setString(3, txtNombre.getText().trim());
-                    pst.setString(4, txtApellido.getText().trim());
-                    pst.setString(5, txtTelefono.getText().trim());
-                    pst.setString(6, txtDireccion.getText().trim());
+                    pst.setString(2, txtActividad.getText().trim());
+                    pst.setString(3, txtDescripcion.getText().trim());
+                    pst.setString(4, txtCantidad.getText().trim());
+//                    pst.setString(5, idRepuestoSeleccionado;
+//                    pst.setString(6, idVehiculoDePlacaIngresada;
                     pst.setInt(7, usuarioEnLinea);
                     pst.executeUpdate();
 
                     lblNotificacion.setText("Regitro exitoso");
                     lblNotificacion.setTextFill(Color.rgb(13, 191, 61));
                     vaciarCampos();
-                    actualizarTableViewClientes(); //Para actualizar los cambios
-                    VBoxFormularioNuevoCliente.setVisible(false);
+                    actualizarTableViewActividades(); //Para actualizar los cambios
+                    VBoxFormularioActividad.setVisible(false);
 
                 } else {
                     lblNotificacion.setText("Existen campos vacios");
                     lblNotificacion.setTextFill(Color.rgb(237, 29, 24));
-                    VBoxFormularioNuevoCliente.setVisible(true);
+                    VBoxFormularioActividad.setVisible(true);
                 }
             }
 
@@ -157,19 +168,20 @@ public class ControllerClientes implements Initializable {
     }
 
     public void onModificarButtonClicked(MouseEvent event) {
-        Cliente cliente = tableViewCliente.getSelectionModel().getSelectedItem();
+        Actividad actividad = tableViewActividades.getSelectionModel().getSelectedItem();
         lblNotificacion.setText("");
 
-        if(cliente != null && cliente.getId_cliente() > 0){
-            VBoxFormularioNuevoCliente.setVisible(true);
+        if(actividad != null && actividad.getId_hojareporte() > 0){
+            VBoxFormularioActividad.setVisible(true);
             lblNuevoCliente.setText("Editar cliente");
             //-----------------------------------------
 
-            txtIdentidad.setText(cliente.getIdentidad());
-            txtNombre.setText(cliente.getNombre());
-            txtApellido.setText(cliente.getApellido());
-            txtTelefono.setText(cliente.getTelefono());
-            txtDireccion.setText(cliente.getDireccion());
+            txtPlaca.setText(actividad.getPlaca());
+            txtNombre.setText(actividad.getNombreCliente());
+            txtApellido.setText(actividad.getApellidoCliente());
+            txtActividad.setText(actividad.getActividad());
+            txtDescripcion.setText(actividad.getDescripcion());
+            txtCantidad.setText(actividad.getCantidad());
 
         } else {
             lblNotificacion.setText("Seleccione una fila para editar");
@@ -177,10 +189,10 @@ public class ControllerClientes implements Initializable {
     }
 
     public void onEliminarButtonClicked(MouseEvent event) {
-        Cliente cliente = tableViewCliente.getSelectionModel().getSelectedItem();
+        Actividad actividad = tableViewActividades.getSelectionModel().getSelectedItem();
         lblNotificacion.setText("");
 
-        if(cliente != null && cliente.getId_cliente() > 0){
+        if(actividad != null && actividad.getId_hojareporte() > 0){
             Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
             alerta.setTitle("Advertencia");
             alerta.setHeaderText("Eliminar");
@@ -189,10 +201,10 @@ public class ControllerClientes implements Initializable {
             alerta.showAndWait();
 
             if(alerta.getResult().getText().equals("Aceptar")){
-                if(Cliente.eliminarRegistroSeleccionado(cliente.getId_cliente())){
+                if(Actividad.eliminarRegistroSeleccionado(actividad.getId_hojareporte())){
                     lblNotificacion.setText("Cliente eliminado");
                     lblNotificacion.setTextFill(Color.rgb(13, 191, 61));
-                    actualizarTableViewClientes();
+                    actualizarTableViewActividades();
                 } else {
                     lblNotificacion.setText("No se pudo eliminar el cliente");
                     lblNotificacion.setTextFill(Color.rgb(237, 29, 24));
@@ -204,39 +216,38 @@ public class ControllerClientes implements Initializable {
     }
 
     private boolean verificarCamposVacios() {
-        if (!txtIdentidad.getText().isBlank() &&
+        if (!txtActividad.getText().isBlank() &&
                 !txtNombre.getText().isBlank() &&
                 !txtApellido.getText().isBlank() &&
-                !txtTelefono.getText().isBlank() &&
-                !txtDireccion.getText().isBlank()) {
+                !txtCantidad.getText().isBlank() &&
+                !txtDescripcion.getText().isBlank()) {
             return true;
         }
         return false;
     }
 
     private void vaciarCampos() {
-        txtIdentidad.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
-        txtTelefono.setText("");
-        txtDireccion.setText("");
+        txtActividad.setText("");
+        txtDescripcion.setText("");
     }
 
     /**Busqueda parcial del cliente ingresado */
     public void onBuscarCampoUsuarioKeyTyped(KeyEvent event) {
-        listaClientes = FXCollections.observableArrayList();
-        Cliente.datosDeClienteBuscado(listaClientes, txtCampoBusqueda.getText().trim());
-        tableViewCliente.setItems(listaClientes);
+        listaActividades = FXCollections.observableArrayList();
+        Actividad.datosDeActividadBuscada(listaActividades, txtCampoBusqueda.getText().trim());
+        tableViewActividades.setItems(listaActividades);
 
         columnasTableViewClientes();
     }
 
     private void columnasTableViewClientes() {
-        colIdentidad.setCellValueFactory(new PropertyValueFactory<>("identidad"));
+        colPlaca.setCellValueFactory(new PropertyValueFactory<>("identidad"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
-        colTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
-        colDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+        colActividad.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        colDescripcion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
     }
 
     private EventHandler<KeyEvent> filtrarSoloLetras = new EventHandler<KeyEvent>() {
@@ -291,3 +302,4 @@ public class ControllerClientes implements Initializable {
     };
 
 }
+

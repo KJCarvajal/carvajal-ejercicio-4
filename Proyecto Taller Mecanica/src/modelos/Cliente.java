@@ -66,6 +66,10 @@ public class Cliente {
         this.direccion = direccion;
     }
 
+    public String getNombreCompleto(){
+        return this.nombre + " " + this.apellido;
+    }
+
     public static void llenarTableView(ObservableList<Cliente> lista){
         PreparedStatement sentencia = null;
         try {
@@ -130,4 +134,5 @@ public class Cliente {
         }
         return false;
     }
+
 }
